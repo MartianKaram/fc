@@ -229,6 +229,7 @@ main{max-width:1000px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-ri
 mark{background:color-mix(in srgb,var(--accent) 28%,transparent);color:inherit;border-radius:3px;padding:0 1px}
 .hit{border-radius:6px;animation:hit 2.6s ease-out}
 @keyframes hit{0%,60%{background:color-mix(in srgb,var(--accent) 38%,transparent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 38%,transparent)}100%{background:transparent;box-shadow:0 0 0 4px transparent}}
+.lead-n{font-family:var(--num)}
 </style>
 
 <header class="top">
@@ -17374,7 +17375,7 @@ function paint(){
   cardEl.setAttribute('data-sec',c.sec);
   const ch=chapterById(+c.sec.split('.')[0]);
   $('crumbs').innerHTML='Chapter '+ch.n+' &middot; '+esc(ch.t)+' &rsaquo; '+c.sec+' '+esc(SECNAME[c.sec]);
-  $('title').textContent=learnMode?'Still learning':c.sec+' '+SECNAME[c.sec];
+  $('title').innerHTML=learnMode?'Still learning':'<span class="lead-n">'+esc(c.sec)+'</span> '+esc(SECNAME[c.sec]);
   cardEl.innerHTML=front(c)+back(c);
   cardEl.onanimationend=()=>cardEl.classList.remove('enter');
   $('front').onclick=flip;
